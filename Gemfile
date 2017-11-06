@@ -52,3 +52,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'mongoid'
 gem 'dotenv-rails', require: 'dotenv/rails-now', group: [:development, :test]
+gem 'bootstrap-sass'
