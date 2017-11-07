@@ -1,0 +1,26 @@
+// Place all the styles related to the page controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.devise-body{
+
+  h2 {
+    font-weight:100;
+  }
+
+  .form-container {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+    height: 400px;
+    padding: 20px 10px;
+    margin-bottom: 50px;
+    margin-top: 50px;
+  }
+
+  input {
+    margin: 10px 0px;
+    width: 300px;
+    height: 40px;
+  }
+}
