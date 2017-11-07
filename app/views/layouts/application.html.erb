@@ -10,32 +10,32 @@
 
   <body>
     <!-- Navigation -->
-    <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle">
+    <div id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle">
       <i class="fa fa-bars"></i>
-    </a>
+    </div>
     <nav id="sidebar-wrapper">
       <ul class="sidebar-nav">
-        <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle">
+        <a id="menu-close" class="btn btn-light btn-lg pull-right toggle">
           <i class="fa fa-times"></i>
         </a>
         <li class="sidebar-brand">
-          <a class="js-scroll-trigger" href="#top">Start Bootstrap</a>
+          <a class="js-scroll-trigger" href="#top">Menu</a>
         </li>
         <li>
-          <a class="js-scroll-trigger" href="#top">Home</a>
+          <%= link_to "Home", page_index_path , class: "js-scroll-trigger" %>
         </li>
-        <li>
-          <a class="js-scroll-trigger" href="#about">About</a>
-        </li>
-        <li>
-          <a class="js-scroll-trigger" href="#services">Services</a>
-        </li>
-        <li>
-          <a class="js-scroll-trigger" href="#portfolio">Portfolio</a>
-        </li>
-        <li>
-          <a class="js-scroll-trigger" href="#contact" onclick=$( "#menu-close").click();>Contact</a>
-        </li>
+        <%- if !signed_in?%>
+          <li>
+            <%= link_to "Log In", new_user_session_path , class: "js-scroll-trigger"%>
+          </li>
+          <li>
+            <%= link_to "Sign Up", new_user_registration_path , class: "js-scroll-trigger" %>
+          </li>
+        <%- else %>
+          <li>
+            <%= link_to "Log Out", destroy_user_session_path , class: "js-scroll-trigger", :method => :delete  %>
+          </li>
+        <% end -%>
       </ul>
     </nav>
 
