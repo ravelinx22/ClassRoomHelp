@@ -22,11 +22,11 @@
   		<div class='list-group gallery'>
         <%- Subject.all.each do |categoria|%>
               <div class='col-md-4 col-lg-4'>
-                <%= link_to subject_topics_path(categoria.id) , class: "fancybox thumbnail", rel: "ligthbox" do %>
-                  <div class="category-square">
-                    <p><%= categoria.name %></p>
-                  </div>
-                <% end %>
+                  <a class="fancybox thumbnail" rel="ligthbox" href="http://placehold.it/800x600.png">
+                      <div class="category-square">
+                        <p><%= categoria.name %></p>
+                      </div>
+                  </a>
               </div>
         <% end %>
           </div>
