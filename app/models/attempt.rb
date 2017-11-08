@@ -5,7 +5,7 @@ class Attempt
 
   belongs_to :exercise
 
-  def initialize
+  def initialize()
     super()
     @steps = []
   end
@@ -17,5 +17,9 @@ class Attempt
 
   def next_step
     @current_step = @steps.shift
+  end
+
+  def self.random_exercise(topic)
+    return topic.exercises.sample
   end
 end

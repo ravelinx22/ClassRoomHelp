@@ -8,7 +8,7 @@
   <div class="container">
     <div class="items">
       <% Subject.where(_id: params[:id]).first.topics.each do |topic| %>
-        <%= link_to page_index_path do %>
+        <%= link_to attempt_path(Attempt.first._id) do %>
           <label><%= topic.name %></label>
         <% end %>
       <% end %>

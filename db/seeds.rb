@@ -38,10 +38,17 @@ Subject.new(name: "Lineal").save!
 
 exercise1 = Exercise.new(statement: "Halle la media de los siguientes numeros:\n2+5+3+6+8+8+6+3+2+5+7+5+3+2+34+5")
 exercise1.topics << topic4
+topic4.exercises << exercise1
 exercise1.save
 exercise2 = Exercise.new(statement: "Halle la moda de los siguientes numeros:\n2+5+3+6+8+8+6+3+2+5+7+5+3+2+34+5")
 exercise2.topics << topic4
+topic4.exercises << exercise2
 exercise2.save
 exercise3 = Exercise.new(statement: "Halle la mediana de los siguientes numeros:\n2+5+3+6+8+8+6+3+2+5+7+5+3+2+34+5")
 exercise3.topics << topic4
+topic4.exercises << exercise3
 exercise3.save
+
+attempt1 = Attempt.new
+attempt1.exercise = exercise1
+attempt1.save!
