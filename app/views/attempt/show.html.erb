@@ -13,21 +13,17 @@
     </textarea>
     </div>
     <div class="list-group col-md-2">
+      <!-- Step Completado
       <a class="list-group-item active">
           <span class="glyphicon glyphicon-list-alt"></span>
           Paso 1
-      </a>
-      <a class="list-group-item active">
-          <span class="glyphicon glyphicon-list-alt"></span>
-          Paso 2
-      </a>
-      <a class="list-group-item active">
-          <span class="glyphicon glyphicon-list-alt"></span>
-          Paso 3
-      </a>
-      <a class="list-group-item"><span class="glyphicon glyphicon-list-alt"></span> Paso 4</a>
-      <a class="list-group-item"><span class="glyphicon glyphicon-list-alt"></span> Paso 5</a>
+      </a> -->
+
+      <% @attempt.exercise.steps.each do |step| %>
+        <a class="list-group-item"><span class="glyphicon glyphicon-list-alt" id="step-icon-description"></span><%= step.description %></a>
+      <% end %>
     </div>
   </div>
+  <button type="button" class="btn btn-info btn-circle btn-xl col-md-offset-9"><i class="glyphicon glyphicon-ok"></i></button>
 </div>
 <hr>

@@ -36,18 +36,34 @@ Subject.new(name: "Diferencial").save!
 Subject.new(name: "Integral").save!
 Subject.new(name: "Lineal").save!
 
+step1 = Step.new(description: "Calcular suma de numeros del conjunto")
+step2 = Step.new(description: "Calcular cuantos numero hay en el conjunto")
+step3 = Step.new(description: "Dividir la suma sobre el numero de datos")
+
+
 exercise1 = Exercise.new(statement: "Halle la media de los siguientes numeros:\n2+5+3+6+8+8+6+3+2+5+7+5+3+2+34+5")
 exercise1.topics << topic4
 topic4.exercises << exercise1
-exercise1.save
+
 exercise2 = Exercise.new(statement: "Halle la moda de los siguientes numeros:\n2+5+3+6+8+8+6+3+2+5+7+5+3+2+34+5")
 exercise2.topics << topic4
 topic4.exercises << exercise2
-exercise2.save
+
 exercise3 = Exercise.new(statement: "Halle la mediana de los siguientes numeros:\n2+5+3+6+8+8+6+3+2+5+7+5+3+2+34+5")
 exercise3.topics << topic4
 topic4.exercises << exercise3
+
+step1.exercise = exercise1
+step2.exercise = exercise1
+step3.exercise = exercise1
+
+exercise1.save
+exercise2.save
 exercise3.save
+
+step1.save
+step2.save
+step3.save
 
 attempt1 = Attempt.new
 attempt1.exercise = exercise1
