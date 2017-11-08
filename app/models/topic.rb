@@ -2,5 +2,6 @@ class Topic
   include Mongoid::Document
   field :name, type: String
 
-  has_and_belongs_to_many :subjects 
+  has_and_belongs_to_many :exercises
+  has_and_belongs_to_many :subjects
 end
