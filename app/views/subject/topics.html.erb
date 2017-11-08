@@ -1,0 +1,18 @@
+<div class="subject-topic-container">
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+      <a class="navbar-brand">Temas</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="items">
+      <% Subject.where(_id: params[:id]).first.topics.each do |topic| %>
+        <%= link_to page_index_path do %>
+          <label><%= topic.name %></label>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<hr>

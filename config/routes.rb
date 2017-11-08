@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   root :to => "page#index"
   resources :page, only: [:index]
   resources :subject, only: [:index]
+
+  get 'subject/:id/topics' => "subject#topics", as: "subject_topics"
 end
