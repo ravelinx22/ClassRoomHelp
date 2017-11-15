@@ -6,6 +6,7 @@
   </nav>
 
   <div class="container">
+    <h2>Temas</h2>
     <div class="items">
       <% Subject.where(_id: params[:id]).first.topics.each do |topic| %>
         <%= link_to attempt_path(Attempt.first._id) do %>
