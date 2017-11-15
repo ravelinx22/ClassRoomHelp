@@ -13,14 +13,14 @@
       <%= text_area_tag :user_logic, params[:name] %>
     </div>
     <div class="list-group col-md-2">
-      <% @attempt.done_steps.each do |step| %>
+      <% @attempt.steps.each do |step| %>
         <a class="list-group-item active">
           <span class="glyphicon glyphicon-list-alt"></span>
           <%= step.description %>
         </a>
       <% end %>
 
-      <% @attempt.current_steps.each do |step| %>
+      <% @attempt.get_current_steps.each do |step| %>
         <a class="list-group-item"><span class="glyphicon glyphicon-list-alt" id="step-icon-description"></span><%= step.description %></a>
       <% end %>
     </div>

@@ -1,23 +1,35 @@
 class Attempt
   include Mongoid::Document
-
-  field :done_steps, type: Array
-  field :current_steps
+  has_many :steps
   belongs_to :exercise
 
   def initialize()
     super()
   end
 
-  def start_exercise_if_necessary
-    update_attributes(done_steps: []) if done_steps == nil
-    update_attributes(current_steps: []) if current_steps == nil
+  def get_current_steps
+    current_steps = []
+    puts exercise.to_json
+
     if exercise
       exercise.steps.each do |step|
-        if !done_steps.include? step
+        if !steps.include? step
           current_steps << step
         end
       end
+    end
+
+    return current_steps
+  end
+
+  def next_step
+    exer = get_current_steps()[0]
+    steps << exer
+
+    if get_current_steps()[0] == nil
+      return true
+    else
+      return false
     end
   end
 end

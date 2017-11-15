@@ -6,4 +6,5 @@ class Step
   field :methods, type: Array
 
   belongs_to :exercise
+  belongs_to :attempt, optional: true
 end
