@@ -10,10 +10,13 @@ class AttemptController < ApplicationController
 
     if acabo
       @attempt.steps.clear
-      redirect_to page_index_path
+      redirect_to attempt_feedback_path
     else
       redirect_to attempt_path(@attempt.id)
     end
+  end
+
+  def feedback
   end
 
   private

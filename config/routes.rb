@@ -8,4 +8,5 @@ Rails.application.routes.draw do
 
   get 'subject/:id/topics' => "subject#topics", as: "subject_topics"
   get 'attempt/:id/check' => "attempt#check_attempt", as: "attempt_check"
+  get 'attempt/:id/feedback' => "attempt#feedback", as: "attempt_feedback"
 end
