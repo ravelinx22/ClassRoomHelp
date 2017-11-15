@@ -9,7 +9,11 @@
     <h2>Temas</h2>
     <div class="items">
       <% Subject.where(_id: params[:id]).first.topics.each do |topic| %>
-        <%= link_to attempt_path(Attempt.first._id) do %>
+      <% exer = topic.exercises.sample %>
+        <% att = Attempt.new() %>
+        <% att.exercise = (exer == nil) ? Exercise.first :  exer %>
+        <% att.save %>
+        <%= link_to attempt_path(att) do %>
           <label><%= topic.name %></label>
         <% end %>
       <% end %>
