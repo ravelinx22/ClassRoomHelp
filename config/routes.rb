@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :attempt, only: [:show]
 
   get 'subject/:id/topics' => "subject#topics", as: "subject_topics"
+  get 'attempt/:id/check' => "attempt#check_attempt", as: "attempt_check"
 end
