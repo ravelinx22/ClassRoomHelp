@@ -2,6 +2,9 @@ class AttemptController < ApplicationController
   before_action :set_attempt, only: [:show, :check_attempt]
 
   def show
+    puts "Hola"
+    puts "@attempt.errors"
+    puts @attempt.errors.count
   end
 
   def check_attempt
