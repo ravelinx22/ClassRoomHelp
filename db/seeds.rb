@@ -42,6 +42,7 @@ step3 = Step.new(description: "Dividir la suma sobre el numero de datos")
 
 
 exercise1 = Exercise.new(statement: "Halle la media de los siguientes numeros:\n2+5+3+6+8+8+6+3+2+5+7+5+3+2+34+5")
+exercise1.image_url = "http://neidybeltran95.blogspot.es/cache/media/files/00/082/789/2013/12/45654.png"
 exercise1.topics << topic4
 topic4.exercises << exercise1
 
