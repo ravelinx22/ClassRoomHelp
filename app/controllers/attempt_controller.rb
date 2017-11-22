@@ -50,13 +50,22 @@ class AttemptController < ApplicationController
       end
 
       if verificado
+        @attempt.update_attributes(current_counted_errors: 0)
         flash[:success] = "Esta bien"
         @attempt.move_next_step
         redirect_to attempt_path(@attempt.id)
       else
-        flash[:danger] = "Esta mal"
-        exercise_name = "Desarrollo de la entidad, persistencia y logica de un modelo."
-        redirect_to attempt_try_more_exercises_path(@attempt.id, tema: "Desarrollo de entidades", nombre_exercise: exercise_name, id_exercise: @attempt.exercise.id)
+        if @attempt.current_counted_errors >= 2
+          flash[:danger] = "Esta mal"
+          exercise_name = "Desarrollo de la entidad, persistencia y logica de un modelo."
+          redirect_to attempt_try_more_exercises_path(@attempt.id, tema: "Desarrollo de entidades", nombre_exercise: exercise_name, id_exercise: @attempt.exercise.id)
+        else
+          current_value = @attempt.current_counted_errors
+          @attempt.update_attributes(current_counted_errors: current_value+1)
+          @attempt.save!
+          flash[:danger] = "Esta mal"
+          redirect_to attempt_path(@attempt.id)
+        end
       end
     end
 
@@ -81,23 +90,27 @@ class AttemptController < ApplicationController
       end
 
       if verificado
+        @attempt.update_attributes(current_counted_errors: 0)
         flash[:success] = "Esta bien"
         @attempt.move_next_step
         redirect_to attempt_path(@attempt.id)
       else
-        flash[:danger] = "Esta mal"
-        exercise_name = "Desarrollo de la entidad, persistencia y logica de un modelo."
-        redirect_to attempt_try_more_exercises_path(@attempt.id, tema: "Desarrollo de persistencia", nombre_exercise: exercise_name, id_exercise: @attempt.exercise.id)
+        if @attempt.current_counted_errors >= 2
+          flash[:danger] = "Esta mal"
+          exercise_name = "Desarrollo de la entidad, persistencia y logica de un modelo."
+          redirect_to attempt_try_more_exercises_path(@attempt.id, tema: "Desarrollo de persistencia", nombre_exercise: exercise_name, id_exercise: @attempt.exercise.id)
+        else
+          current_value = @attempt.current_counted_errors
+          @attempt.update_attributes(current_counted_errors: current_value+1)
+          @attempt.save!
+          flash[:danger] = "Esta mal"
+          redirect_to attempt_path(@attempt.id)
+        end
       end
     end
 
     def verificar_logica user_input
       acabo = @attempt.next_step
-
-      if acabo
-        @attempt.steps.clear
-        redirect_to attempt_feedback_path
-      end
 
       verificado = false
       p1 = @attempt.verify_annotation(user_input.lines[0]) if user_input.lines[0] && user_input.lines[0].strip != '' && user_input.lines[0].strip == "@Stateless"
@@ -111,13 +124,22 @@ class AttemptController < ApplicationController
       end
 
       if verificado
+        @attempt.update_attributes(current_counted_errors: 0)
         @attempt.move_next_step
         @attempt.steps.clear
         redirect_to attempt_feedback_path
       else
-        flash[:danger] = "Esta mal"
-        exercise_name = "Desarrollo de la entidad, persistencia y logica de un modelo."
-        redirect_to attempt_try_more_exercises_path(@attempt.id, tema: "Desarrollo de logica", nombre_exercise: exercise_name, id_exercise: @attempt.exercise.id)
+        if @attempt.current_counted_errors >= 2
+          flash[:danger] = "Esta mal"
+          exercise_name = "Desarrollo de la entidad, persistencia y logica de un modelo."
+          redirect_to attempt_try_more_exercises_path(@attempt.id, tema: "Desarrollo de logica", nombre_exercise: exercise_name, id_exercise: @attempt.exercise.id)
+        else
+          current_value = @attempt.current_counted_errors
+          @attempt.update_attributes(current_counted_errors: current_value+1)
+          @attempt.save!
+          flash[:danger] = "Esta mal"
+          redirect_to attempt_path(@attempt.id)
+        end
       end
     end
 end

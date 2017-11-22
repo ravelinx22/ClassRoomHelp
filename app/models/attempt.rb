@@ -1,5 +1,6 @@
 class Attempt
   include Mongoid::Document
+  field :current_counted_errors, type: Integer, :default => 0
   has_many :steps
   belongs_to :exercise
 
@@ -83,7 +84,7 @@ class Attempt
     response = HTTParty.get('https://nodeclassroomhelp.mybluemix.net/clasificador',
                           :query => { :daniela => user_input }
                         )
-                        
+
     if JSON.parse(response.body)['tipoElemento'] == "clase"
       return true
     else
