@@ -1,0 +1,47 @@
+#####################################################
+# Entidad
+#####################################################
+
+@Entity
+public class ClienteEntity implements Serializable {
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private Long id;
+
+    private int cedula;
+
+    private String  nombre;
+
+    private String tel ;
+}
+
+#####################################################
+# Persistencia
+#####################################################
+
+@Stateless
+public class ClientePersistence {
+    @PersistenceContext(unitName = "clientePU")
+    protected EntityManager em;
+
+    public ClienteEntity create(ClienteEntity entity)
+    {
+        em.persist(entity);
+        return entity;
+    }
+}
+
+#####################################################
+# Logica
+#####################################################
+
+@Stateless
+public class ClienteLogic {
+    @Inject
+    private ClientePersistence persistence;
+
+    public ClienteEntity createLugar(ClienteEntity entity)
+    {
+        return persistence.create(entity);
+    }
+}

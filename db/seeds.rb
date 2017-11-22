@@ -54,8 +54,8 @@ step2 = Step.new(description: "Calcular cuantos numero hay en el conjunto")
 step3 = Step.new(description: "Dividir la suma sobre el numero de datos")
 
 step4 = Step.new(description: "Entidad")
-step5 = Step.new(description: "Persistencia")
-step6 = Step.new(description: "Logica")
+step5 = Step.new(description: "Persistencia para crear")
+step6 = Step.new(description: "Logica para crear")
 
 exercise1 = Exercise.new(statement: "Halle la media de los siguientes numeros:\n2+5+3+6+8+8+6+3+2+5+7+5+3+2+34+5")
 exercise1.topics << topic4
@@ -94,7 +94,3 @@ step3.save
 step4.save
 step5.save
 step6.save
-
-attempt1 = Attempt.new
-attempt1.exercise = exercise1
-attempt1.save!

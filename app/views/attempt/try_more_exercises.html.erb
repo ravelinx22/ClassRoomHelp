@@ -1,0 +1,34 @@
+<% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>"><%= value %></div>
+<% end %>
+
+<div class="container">
+  <div class="row">
+    <h3>Los temas que tienes que mejorar es:</h3>
+
+    <ul>
+      <li>
+        <%= params[:tema]%>
+      </li>
+    </ul>
+  </div>
+
+  <div class="row">
+    <h3>Para eso puedes estudiar los siguientes ejercicios:</h3>
+
+    <ul>
+      <li>
+        <% exer = Exercise.all.where(id: params[:id_exercise]).first %>
+          <% att = Attempt.new() %>
+          <% att.exercise = (exer == nil) ? Exercise.first :  exer %>
+          <% att.save %>
+          <%= link_to attempt_path(att) do %>
+            <%= params[:nombre_exercise]%>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+<hr>

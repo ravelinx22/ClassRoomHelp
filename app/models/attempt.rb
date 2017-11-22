@@ -22,11 +22,69 @@ class Attempt
     return current_steps
   end
 
-  def next_step
+  def move_next_step
     exer = get_current_steps()[0]
     steps << exer
 
     if get_current_steps()[0] == nil
+      return true
+    else
+      return false
+    end
+  end
+
+  def next_step
+    exer = get_current_steps()[0]
+
+    if get_current_steps()[0] == nil
+      return true
+    else
+      return false
+    end
+  end
+
+  def verify_method(user_input)
+    response = HTTParty.get('https://nodeclassroomhelp.mybluemix.net/clasificador',
+                          :query => { :daniela => user_input }
+                        )
+
+    if JSON.parse(response.body)['tipoElemento'] == "metodo"
+      return true
+    else
+      return false
+    end
+  end
+
+  def verify_attribute(user_input)
+    response = HTTParty.get('https://nodeclassroomhelp.mybluemix.net/clasificador',
+                          :query => { :daniela => user_input }
+                          )
+
+    if JSON.parse(response.body)['tipoElemento'] == "atributo"
+      return true
+    else
+      return false
+    end
+  end
+
+  def verify_annotation(user_input)
+    response = HTTParty.get('https://nodeclassroomhelp.mybluemix.net/clasificador',
+                          :query => { :daniela => user_input }
+                        )
+
+    if JSON.parse(response.body)['tipoElemento'] == "anotacion"
+      return true
+    else
+      return false
+    end
+  end
+
+  def verify_class(user_input)
+    response = HTTParty.get('https://nodeclassroomhelp.mybluemix.net/clasificador',
+                          :query => { :daniela => user_input }
+                        )
+                        
+    if JSON.parse(response.body)['tipoElemento'] == "clase"
       return true
     else
       return false
